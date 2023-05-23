@@ -1,0 +1,36 @@
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    margin-right: 1rem;
+    color: #fff;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  
+  .social-links a:hover {
+    color: #007bff;
+    transform: translateY(-3px);
+  }
+  
+  .social-links .twitter:hover {
+    color: #1da1f2;
+  }
+  
+  .social-links .facebook:hover {
+    color: #3b5998;
+  }
+  
+  .social-links .instagram:hover {
+    color: #e1306c;
+  }
+  
+  .social-links .linkedin:hover {
+    color: #0077b5;
+  }
+
+  

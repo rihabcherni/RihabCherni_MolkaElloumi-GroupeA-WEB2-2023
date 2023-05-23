@@ -1,0 +1,106 @@
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+    min-height: max-content;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 500px;
+    min-height: max-content;
+    position: relative;
+  }
+  .popup h2{
+    text-align: center;
+  }
+  #closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border: 10px;
+    padding:5px 10px;
+  }
+  
+  .grp-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .grp-input label {
+    width: 100px;
+    margin-right: 10px;
+  }
+  
+  .grp-input input[type="text"],
+  .grp-input input[type="file"] {
+    flex-grow: 1;
+  }
+  
+  .popup input[type="submit"] {
+    margin-top: 10px;
+    margin-left: 60%;
+    background-color: rgb(23, 197, 23);
+    border-radius: 15px;
+    padding: 10px;
+    border: none;
+    width: 19%;
+    color: white;
+    font-size: 1.1rem;
+  }
+  #cancel{
+    margin-top: 10px;
+    margin-left: 0;
+    background-color: rgb(224, 65, 17);
+    border-radius: 15px;
+    width: 19%;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: none;
+  }
+  .msg{
+    color:#888;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px ;
+  }
+  #show-content{
+    font-size: 1.2rem;
+  }
+  #show-content div{
+    display: grid;
+    grid-template-columns:30% 1fr;
+  }
+  #show-content img{
+    width: 150px;
+  }
+  .table-container {
+    display: grid;
+    grid-template-columns:1fr ;
+    justify-content: center;
+    align-items: center;
+    margin:5px 50px;
+  }
+  .table-container td, .table-container td{
+    text-align: center;
+    background-color: #ecebeb;
+  }
+  .table-container div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+  }
