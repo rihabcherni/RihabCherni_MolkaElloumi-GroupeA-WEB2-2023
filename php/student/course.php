@@ -1,9 +1,13 @@
 <?php
+  session_start();
+  if ($_SESSION['conn'] == false) {
+    header("Location: ../login.php");
+    exit();
+  } 
 $activePage = 'course';
 include 'crud.php';
-session_start();
 include('config.php');
-$id= $_SESSION['student_id'];
+$id= $_SESSION['id'];
 $course = getRecordById('course', $id , $conn);
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $searchAttributes = ['id', 'name', 'nature', 'domain_study', 'level','description'];
@@ -77,11 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
   <title>Home</title>
   <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
   <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/index.css" />
-  <link rel="stylesheet" href="../style/all.css" />
-    <link rel="stylesheet" href="../style/Nav2.css" />
-    <link rel="stylesheet" href="../style/home.css" />
-    <link rel="stylesheet" href="../style/modal.css" />
+  <link rel="stylesheet" href="../style/index.css?v=1.1" />
+  <link rel="stylesheet" href="../style/all.css?v=1.1" />
+    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
+    <link rel="stylesheet" href="../style/home.css?v=1.1" />
+    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
     <script src="../js/modal.js"></script>
 </head>
 <body>
@@ -173,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
                 <input type="text" name="search" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
                 <input type="submit" value="Search"/>
               </form>
-              <button id="openBtn" onclick="modal()">ADD</button>
+              <button id="openBtn" onclick="openAddModal()">ADD</button>
             </div> 
             <table border="2" class="tableCrud">
               <thead>

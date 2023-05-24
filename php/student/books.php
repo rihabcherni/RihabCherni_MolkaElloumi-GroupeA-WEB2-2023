@@ -1,17 +1,21 @@
 <?php
+  session_start();
+  if ($_SESSION['conn'] == false) {
+    header("Location: ../login.php");
+    exit();
+  } 
   $activePage = 'books';
   include 'crud.php';
-  session_start();
   include('config.php');
-  $id= $_SESSION['student_id'];
-  $books = getRecordById('books', $id , $conn);
-  $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-  $searchAttributes = ['id', 'name', 'author', 'duration', 'nature', 'summary', 'number_of_page'];
-  $books = searchRecords('books', $searchTerm, $searchAttributes, $conn);
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' ) { 	
+  $id= $_SESSION['id'];
+  $books=getRecordById('books', $id , $conn);
+  $searchTerm = isset($_GET['search']) ? $_GET['search']:'';
+  $searchAttributes=['id','name','author','duration','nature','summary','number_of_page'];
+  $books=searchRecords('books',$searchTerm,$searchAttributes,$conn);
+  if ($_SERVER['REQUEST_METHOD']==='POST') { 	
     if (!empty($_POST['action']) && $_POST['action'] === 'insert') {
-      if (!empty($_POST['name']) && !empty($_POST['author']) && !empty($_POST['duration']) && 
-      !empty($_POST['nature']) && !empty($_POST['summary'])  && !empty($_POST['number_of_page']) ) {
+      if (!empty($_POST['name'])&&!empty($_POST['author'])&&!empty($_POST['duration']) && 
+      !empty($_POST['nature'])&& !empty($_POST['summary'])&&!empty($_POST['number_of_page']) ) {
           $data = [
               'name' => $_POST['name'],
               'author' => $_POST['author'],
@@ -84,11 +88,11 @@
   <title>Books</title>
   <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
   <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/index.css" />
-  <link rel="stylesheet" href="../style/all.css" />
-    <link rel="stylesheet" href="../style/Nav2.css" />
-    <link rel="stylesheet" href="../style/home.css" />
-    <link rel="stylesheet" href="../style/modal.css" />
+  <link rel="stylesheet" href="../style/index.css?v=1.1" />
+  <link rel="stylesheet" href="../style/all.css?v=1.1" />
+    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
+    <link rel="stylesheet" href="../style/home.css?v=1.1" />
+    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
     <script src="../js/modal.js"></script>
 </head>
 <body>
@@ -185,7 +189,7 @@
                 <input type="text" name="search" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
                 <input type="submit" value="Search"/>
               </form>
-              <button id="openBtn" onclick="modal()">ADD</button>
+              <button id="openBtn" onclick="openAddModal()">ADD</button>
             </div> 
             <table border="2" class="tableCrud">
               <thead>

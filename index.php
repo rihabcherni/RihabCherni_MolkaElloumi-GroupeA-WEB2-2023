@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login EVELVE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <link rel="stylesheet" href="./style/index.css" />
-    <link rel="stylesheet" href="./style/home.css" />
-    <link rel="stylesheet" href="./style/all.css" />
+    <link rel="stylesheet" href="./style/index.css?v=1.1" />
+    <link rel="stylesheet" href="./style/home.css?v=1.1" />
+    <link rel="stylesheet" href="./style/all.css?v=1.1" />
     <script src="./js/jquery.min.js"></script>
 </head>
 <body>
@@ -47,7 +47,7 @@
 ?>
   <main id="mainIndex">
   <button><a href="php/login.php">Login</a></button>
-  <h1 id="animated-text">Bienvenue à EVOLVE</h1>
+  <h1 id="animated-text">Welcome to EVOLVE</h1>
     <section id="facts">
       <div>
         <div class="section-title">
@@ -57,37 +57,37 @@
           <div class="column" data-aos="fade-up">
             <div class="count-box">
               <span class="purecounter"><?php echo $countStu; ?></span>
-              <p><strong>Nbr students</strong></p>
+              <p><strong>Number students</strong></p>
             </div>
           </div>
           <div class="column" data-aos="fade-up">
             <div class="count-box">
               <span class="purecounter"><?php echo $countSkills; ?></span>
-              <p><strong>Nbr skills</strong></p>
+              <p><strong>Number skills</strong></p>
             </div>
           </div>
           <div class="column" data-aos="fade-up">
             <div class="count-box">
               <span class="purecounter"><?php echo $countCourse; ?></span>
-              <p><strong>Nbr course</strong></p>
+              <p><strong>Number course</strong></p>
             </div>
           </div>
           <div class="column" data-aos="fade-up">
             <div class="count-box">
               <span class="purecounter"><?php echo $countClub; ?></span>
-              <p><strong>Nbr clubs</strong></p>
+              <p><strong>Number clubs</strong></p>
             </div>
           </div>
           <div class="column" data-aos="fade-up">
             <div class="count-box">
               <span class="purecounter"><?php echo $countbooks; ?></span>
-              <p><strong>Nbr books</strong></p>
+              <p><strong>Number books</strong></p>
             </div>
           </div>
           <div class="column" data-aos="fade-up">
             <div class="count-box">
               <span class="purecounter"><?php echo $countTasks; ?></span>
-              <p><strong>Nbr tasks</strong></p>
+              <p><strong>Number tasks</strong></p>
             </div>
           </div>   
         </div>

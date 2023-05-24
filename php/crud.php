@@ -1,9 +1,4 @@
 <?php
-    function getAllRecords($tableName, $conn){
-        $stmt = $conn->prepare("SELECT * FROM $tableName");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 
     function getRecordById($tableName, $id, $conn){
         $stmt = $conn->prepare("SELECT * FROM $tableName WHERE student_id = :id");
@@ -26,8 +21,8 @@
     }
     function insertRecord($tableName, $data, $conn) {
         $columns = implode(', ', array_keys($data));
-        $placeholders = ':' . implode(', :', array_keys($data));
-        $query = "INSERT INTO $tableName ($columns) VALUES ($placeholders)";
+        $value = ':' . implode(', :', array_keys($data));
+        $query = "INSERT INTO $tableName ($columns) VALUES ($value)";
         $stmt = $conn->prepare($query);
         foreach ($data as $key => $value) {
             if ($key == 'logo') { 
@@ -70,5 +65,4 @@
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
-
 ?>

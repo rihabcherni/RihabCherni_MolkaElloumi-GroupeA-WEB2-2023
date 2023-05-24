@@ -1,4 +1,4 @@
-const animatedText = document.getElementById('animated-text');
+const animatedText= document.getElementById('animated-text');
 const text = animatedText.innerHTML;
 animatedText.innerHTML = ''; 
 for (let i = 0; i < text.length; i++) {

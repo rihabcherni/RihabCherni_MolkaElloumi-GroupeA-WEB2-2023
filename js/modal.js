@@ -1,22 +1,21 @@
-function modal() {
-    var openBtn = document.getElementById("openBtn");
-    var closeBtn = document.getElementById("closeBtn");
-    var cancel = document.getElementById("cancel");
-    var popup = document.getElementById("popup");
-    openBtn.addEventListener("click", function() {
-    popup.style.display = "block";
-    });
-    closeBtn.addEventListener("click", function() {
-    popup.style.display = "none";
-    });
-
-    cancel.addEventListener("click", function() {
-      popup.style.display = "none";
+    function openAddModal() {
+      var openBtn = document.getElementById("openBtn");
+      var closeBtn = document.getElementById("closeBtn");
+      var cancel = document.getElementById("cancel");
+      var popup = document.getElementById("popup");
+      openBtn.addEventListener("click", function() {
+        popup.style.display = "block";
       });
-  }
-  function openUpdateModal(data) {
-    var parsedData = JSON.parse(data);        
-    var modal = document.getElementById("updateModal");
+      closeBtn.addEventListener("click", function() {
+        popup.style.display = "none";
+      });
+      cancel.addEventListener("click", function() {
+        popup.style.display = "none";
+      });
+    }
+    function openUpdateModal(data) {
+      var parsedData = JSON.parse(data);        
+      var modal = document.getElementById("updateModal");
       parsedData.forEach(pair => {
         var attribute = pair[0];
         var value = pair[1];
@@ -61,13 +60,12 @@ function modal() {
         }
       });
         modal.style.display = "block";
-      }
+    }
     function openDeleteModal(id) {
       var modal = document.getElementById("deleteModal");
       document.getElementById("idDele").value=id;
       modal.style.display = "block";
-    }
-      
+    }    
     function closeModal(modalId) {
       var modal = document.getElementById(modalId);
       modal.style.display = "none"; 

@@ -1,5 +1,12 @@
 <?php
 $activePage = 'skills';
+include 'crud.php';
+session_start();
+session_start();
+if ($_SESSION['conn'] == false) {
+  header("Location: ../login.php");
+  exit();
+} 
 ?>
 
 <!DOCTYPE html>
@@ -7,11 +14,11 @@ $activePage = 'skills';
 <head>
   <title>Skills</title>
   <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../style/index.css" />
+  <link rel="stylesheet" href="../style/index.css?v=1.1" />
   <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/all.css" />
-    <link rel="stylesheet" href="../style/Nav2.css" />
-    <link rel="stylesheet" href="../style/home.css" />
+  <link rel="stylesheet" href="../style/all.css?v=1.1" />
+    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
+    <link rel="stylesheet" href="../style/home.css?v=1.1" />
 </head>
 <body>
   <?php include 'navbar.php'; ?>
