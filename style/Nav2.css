@@ -32,5 +32,6 @@
   .social-links .linkedin:hover {
     color: #0077b5;
   }
-
-  
+  .text-light{
+    color: white;
+  }

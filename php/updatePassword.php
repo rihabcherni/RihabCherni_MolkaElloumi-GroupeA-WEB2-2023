@@ -13,8 +13,8 @@
 </head>
 <body>
     <?php 
-    include 'navbar.php'; 
       session_start();
+      $user=$_SESSION['user'];
       if ($_SESSION['conn'] == false) {
         header("Location: ../login.php");
         exit();
@@ -25,12 +25,12 @@
         $newPassword = $_POST['newPassword'];
         $confirmPassword = $_POST['confirmPassword'];
         $Email = $_SESSION['Email'];
-        $query = 'SELECT * FROM student WHERE Email = :Email';
+        $query = 'SELECT * FROM '.$user.' WHERE Email = :Email';
         $stmt = $conn->prepare($query);
         $stmt->bindValue(':Email', $Email);
         $stmt->execute();
         $student = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$student || !password_verify($oldPassword, $student['password'])) {
+        if (!$student || $oldPassword=== $student['password']) {
           $error = 'Incorrect old password.';
           echo '<p>' . $error . '</p>';
         } else if ($newPassword != $confirmPassword) {
@@ -47,28 +47,33 @@
           echo '<p>' . $success . '</p>';
         }
       }
+      if($user==="admin") {
+        include 'adminNavbar.php';  
+      }else{
+        include 'navbar.php';   
+      }
     ?>
-     <main id="main">  
-      <div  class="auth-container">
-         <div id="uppass-box">
-            <div>
-              <h1>Update password</h1>
-              <hr/>
-              <form method="post" id="uppass" class="uppass" enctype="multipart/form-data">
-                  <div class="gr-input">
-                    <input type="text" id="oldPassword" name="oldPassword" placeholder="oldPassword" required />
-                  </div><!--oldPassword-->
-                  <div class="gr-input">
-                    <input type="password" id="password" name="password" placeholder="Password" required />
-                  </div>
-                  <div class="gr-input">
-                    <input type="password" id="confirmPassword" name="confirmPassword"  placeholder="Confirm Password" required />
-                  </div>
-                  <input type="submit" id="up-btn" value="Update Password"  class="myBtn"/>
-              </form>
-            </div>
+     <main id="main"> 
+        <div  class="auth-container">
+          <div id="uppass-box">
+              <div>
+                <h1>Update password</h1>
+                <hr/>
+                <form method="post" id="uppass" class="uppass" enctype="multipart/form-data">
+                    <div class="gr-input">
+                      <input type="text" id="oldPassword" name="oldPassword" placeholder="oldPassword" required />
+                    </div><!--oldPassword-->
+                    <div class="gr-input">
+                      <input type="password" id="password" name="password" placeholder="Password" required />
+                    </div>
+                    <div class="gr-input">
+                      <input type="password" id="confirmPassword" name="confirmPassword"  placeholder="Confirm Password" required />
+                    </div>
+                    <input type="submit" id="up-btn" value="Update Password"  class="myBtn"/>
+                </form>
+              </div>
+          </div>
         </div>
-       </div>
      </main>
   </body>
 </html>

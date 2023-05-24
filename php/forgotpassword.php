@@ -59,12 +59,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login EVELVE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <link rel="stylesheet" href="../style/index.css?v=1.1" />
-    <link rel="stylesheet" href="./style/all.css?v=1.1" />
+    <link rel="stylesheet" href="../style/index.css?v=2.1" />
+    <link rel="stylesheet" href="./style/all.css?v=2.1" />
     <script src="../js/jquery.min.js"></script>
 </head>
-<body>
-    <section class="auth-container">
+<body class="authBody">
+<section class="auth-container">
         <div id="forgot-box">
             <div class="log1">
               <h1>Forgot Your Password?</h1>
@@ -79,13 +79,15 @@
                   <input type="submit" id="forgot-btn" value="Reset Password"  class="myBtn"/>
                 </div>
               </form>
+              <div class="forg-lin">
+                <a href="login.php">Back</a>
+              </div>
             </div>
             <div class="log2">
-              <h1>Reset Password!</h1>
-              <hr/>
-              <button class="myBtn2" id="back-link"><a href="login.php">Back</a></button>
+              <img src="../assets/forgot.avif" alt="login"/> 
             </div>
         </div>
     </section>
 </body>
 </html>
+          

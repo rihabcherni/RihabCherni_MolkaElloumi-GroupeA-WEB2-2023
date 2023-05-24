@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else if (empty($password)) {
         $_SESSION['password-error'] = "Please enter your password.";
     } else {
-        // Check if the user is a student
         $studentQuery = $conn->prepare("SELECT student_id, lastname, firstName,gender,Date_of_birth,phone,education_level,Photo, password	,address FROM student WHERE Email = :Email");
         $studentQuery->bindValue(':Email', $email);
         $studentQuery->execute();
@@ -32,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['education_level'] = $row['education_level'];
                 $_SESSION['Photo'] = $row['Photo'];
                 $_SESSION['Email'] = $_POST["Email"];
+                $_SESSION['user']= 'student';
                 header("Location: student/home.php");
                 exit();
             } else {
@@ -49,9 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $_SESSION['firstName'] = $row['firstName'];
                     $_SESSION['lastName'] = $row['lastName'];
                     $_SESSION['photo'] = $row['photo'];
-                    $_SESSION['adress'] = $row['adress'];
+                    $_SESSION['address'] = $row['address'];
                     $_SESSION['phone'] = $row['phone'];
                     $_SESSION['Email'] = $_POST["Email"];
+                    $_SESSION['user']= 'admin';
                     header("Location: admin/AdminHome.php");
                     exit();
                 } else {

@@ -61,7 +61,7 @@
       <title>Login EVELVE</title>
       <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="../style/index.css?v=2.1" />
-      <link rel="stylesheet" href="./style/all.css?v=1.1" />
+      <link rel="stylesheet" href="./style/all.css?v=2.1" />
       <script src="../js/jquery.min.js"></script>
   </head>
   <body class="authBody">

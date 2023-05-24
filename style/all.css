@@ -63,10 +63,12 @@ h1, h2, h3, h4, h5, h6,p {
   overflow-y: auto;
 }
 #menu .profile img {
-  margin: 15px auto;
+  margin: 20px auto;
   display: block;
-  width: 120px;
-  border: 8px solid #2c2f3f;
+  width: 170px;
+  border-radius: 50%;
+  border: 5px solid white;
+  padding: 3px;
 }
 #menu .profile h1 {
   font-size: 24px;
@@ -249,7 +251,7 @@ h1, h2, h3, h4, h5, h6,p {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 20px 0;
+  padding: 10px 0 ;
   overflow: hidden;
 }
 
@@ -257,29 +259,18 @@ section {
   background: #f5f8fd;
 }
 
-.section-title {
-  padding-bottom: 30px;
-}
 
 .section-title h2 {
+  margin: 10px 20px ;
   font-size: 32px;
+  padding-bottom: 2px;
   font-weight: bold;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
   position: relative;
   color: #173b6c;
+  width: max-content !important;
+  border-bottom: 5px solid #2078f2;
 }
 
-.section-title h2::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #149ddd;
-  bottom: 0;
-  left: 0;
-}
 
 .section-title p {
   margin-bottom: 0;
@@ -1016,7 +1007,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  padding: 15px;
+  padding: 5px;
   color: #f4f6fd;
   font-size: 14px;
   position: fixed;
@@ -1024,18 +1015,8 @@ section {
   bottom: 0;
   width: 300px;
   z-index: 9999;
-  background: #040b14;
-}
-
-#footer .copyright {
   text-align: center;
-}
-
-#footer .credits {
-  padding-top: 5px;
-  text-align: center;
-  font-size: 13px;
-  color: #eaebf0;
+  background-color: #2e3e55;
 }
 
 @media (max-width: 1199px) {

@@ -2,16 +2,14 @@
   overflow: hidden;
   white-space: nowrap;
   margin: 0 auto;
+  font-weight: bold;
   letter-spacing: .15em; 
   animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; /* Define the typing animation */
   font-size: 40px;
   font-family: 'Poppins',sans-serif ;
   text-align: center;
-  color: rgb(239, 239, 239);
+  color: rgb(124, 114, 237);
   padding-top: 5px;
-  }
-  .stud-name{
-    color: #003790 !important;
   }
 @keyframes typing {
   from {
@@ -36,7 +34,6 @@ body{
 .back-img {
   width: 99%;
 }
-
 #mainIndex button {
   background-color: #586258;
   color: white;
@@ -47,12 +44,10 @@ body{
   font-size: 18px;
   float: right;
 }
-
 button a {
   color: white;
   text-decoration: none;
 }
-
 button:hover {
   background-color: #45a049;
 }
@@ -73,7 +68,6 @@ button:hover {
   padding: 10px;
   background-color: #bfbfbf;
 }
-
 .count-box p {
   margin-top: 8px;
   font-size: 24px;
