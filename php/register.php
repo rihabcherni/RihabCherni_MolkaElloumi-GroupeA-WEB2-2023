@@ -1,4 +1,5 @@
 <?php
+$_SESSION['conn'] =false;
   session_start();
   $errorMsg = "";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,7 +28,6 @@
         $file_path = "../picture/userPicture/".$file_name;
         move_uploaded_file($_FILES['Photo']['tmp_name'], $file_path);
 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("INSERT INTO student (lastname, firstName, gender, Date_of_birth, phone, education_level, Photo, password, Email, address, created_at)
           VALUES (:lastname, :firstName, :gender, :Date_of_birth, :phone, :education_level, :Photo, :password, :Email, :address, :created_at)");
         $stmt->bindParam(':lastname', $_POST["lastname"]);
@@ -37,13 +37,15 @@
         $stmt->bindParam(':phone', $_POST["phone"]);
         $stmt->bindParam(':education_level', $_POST["education_level"]);
         $stmt->bindParam(':Photo', $file_name);
-        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':password', $password);
         $stmt->bindParam(':Email', $_POST["Email"]);
         $stmt->bindParam(':address', $_POST["address"]);
         $stmt->bindParam(':created_at', $created_at);
         $created_at = date("Y-m-d H:i:s");
         $stmt->execute();
+        $_SESSION['conn'] =true;
         $successMsg = "New student registered successfully.";
+        header("Location: student/home.php");
       }
     } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
@@ -61,7 +63,7 @@
       <title>Login EVELVE</title>
       <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="../style/index.css?v=2.1" />
-      <link rel="stylesheet" href="./style/all.css?v=2.1" />
+      <link rel="stylesheet" href="./style/all.css?v=3.1" />
       <script src="../js/jquery.min.js"></script>
   </head>
   <body class="authBody">

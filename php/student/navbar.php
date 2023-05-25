@@ -1,9 +1,9 @@
-  <script src="../js/nav.js"></script>
+  <script src="../../js/nav.js"></script>
   <header>
     <div id="menu">
       <div class="profile">
-        <img src="../assets/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><?php echo $_SESSION['lastname']." ".$_SESSION['firstName']?></h1>
+      <img src="<?php echo '../../picture/userPicture/'.$_SESSION['photo']?>" alt="student" class="img-nav">
+        <h1 class="nameNav"><?php echo $_SESSION['lastname']." ".$_SESSION['firstName']?></h1>
       </div>
       <nav id="navbar" class="nav-menu navbar">
         <ul>

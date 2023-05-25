@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../style/index.css?v=1.1" />
     <script src="../js/jquery.min.js"></script>
     <link rel="stylesheet" href="../../style/all.css?v=3.1" />
-      <link rel="stylesheet" href="../../style/Nav2.css?v=2.1" />
+      <link rel="stylesheet" href="../../style/Nav.css?v=2.1" />
       <link rel="stylesheet" href="../../style/home.css?v=2.1" />
   </head>
   <body>
@@ -55,6 +55,7 @@
       <div class="section-title">
         <h2>Our Statistics</h2>
         </div>
+        <br/>
         <div class="cont-facts">
           <div class="column" data-aos="fade-up">
             <div class="count-box">

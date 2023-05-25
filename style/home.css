@@ -8,9 +8,16 @@
   font-size: 40px;
   font-family: 'Poppins',sans-serif ;
   text-align: center;
-  color: rgb(124, 114, 237);
+  color: rgb(36, 33, 65);
   padding-top: 5px;
-  }
+}
+.animated-text{
+  margin: 170px auto !important;
+  color: rgb(255, 255, 255) !important;
+  font-size: 70px !important;
+  color: #FFFFFF;
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #47454d 0px 0px 20px, #47454d 0px 0px 30px, #47454d 0px 0px 40px, #47454d 0px 0px 50px, #47454d 0px 0px 75px;
+}  
 @keyframes typing {
   from {
     width: 0

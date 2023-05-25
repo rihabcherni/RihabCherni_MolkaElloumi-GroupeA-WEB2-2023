@@ -5,10 +5,8 @@
     exit();
   } 
 $activePage = 'course';
-include 'crud.php';
-include('config.php');
-$id= $_SESSION['id'];
-$course = getRecordById('course', $id , $conn);
+include '../crud.php';
+include('../config.php');
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $searchAttributes = ['id', 'name', 'nature', 'domain_study', 'level','description'];
 $course = searchRecords('course', $searchTerm, $searchAttributes, $conn);
@@ -81,12 +79,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
   <title>Home</title>
   <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
   <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/index.css?v=1.1" />
-  <link rel="stylesheet" href="../style/all.css?v=1.1" />
-    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
-    <link rel="stylesheet" href="../style/home.css?v=1.1" />
-    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
-    <script src="../js/modal.js"></script>
+  <link rel="stylesheet" href="../../style/index.css?v=1.1" />
+  <link rel="stylesheet" href="../../style/all.css?v=3.1" />
+    <link rel="stylesheet" href="../../style/Nav.css?v=3.1" />
+    <link rel="stylesheet" href="../../style/home.css?v=1.1" />
+    <link rel="stylesheet" href="../../style/modal.css?v=1.1" />
+    <script src="../../js/modal.js"></script>
 </head>
 <body>
   <?php include 'navbar.php'; ?>

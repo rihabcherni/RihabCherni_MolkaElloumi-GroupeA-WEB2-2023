@@ -5,10 +5,8 @@
     exit();
   } 
   $activePage = 'books';
-  include 'crud.php';
-  include('config.php');
-  $id= $_SESSION['id'];
-  $books=getRecordById('books', $id , $conn);
+  include '../crud.php';
+  include('../config.php');
   $searchTerm = isset($_GET['search']) ? $_GET['search']:'';
   $searchAttributes=['id','name','author','duration','nature','summary','number_of_page'];
   $books=searchRecords('books',$searchTerm,$searchAttributes,$conn);
@@ -88,12 +86,29 @@
   <title>Books</title>
   <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
   <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/index.css?v=1.1" />
-  <link rel="stylesheet" href="../style/all.css?v=1.1" />
-    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
-    <link rel="stylesheet" href="../style/home.css?v=1.1" />
-    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
-    <script src="../js/modal.js"></script>
+  <link rel="stylesheet" href="../../style/index.css?v=1.1" />
+  <link rel="stylesheet" href="../../style/all.css?v=3.1" />
+    <link rel="stylesheet" href="../../style/Nav.css?v=3.1" />
+    <link rel="stylesheet" href="../../style/home.css?v=1.1" />
+    <link rel="stylesheet" href="../../style/modal.css?v=1.1" />
+    <script src="../../js/modal.js"></script>
+    <style>
+    table {
+      border-collapse: collapse;
+      margin: 30px 30px ;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <?php include 'navbar.php'; ?>
@@ -191,7 +206,7 @@
               </form>
               <button id="openBtn" onclick="openAddModal()">ADD</button>
             </div> 
-            <table border="2" class="tableCrud">
+            <table>
               <thead>
                 <tr>
                   <th>ID books</th>
@@ -201,7 +216,6 @@
                   <th>nature</th>
                   <th>summary</th>
                   <th>number_of_page</th>
-                  <th>picture</th>
                   <th>Actions</th></tr>
                 </tr>
               </thead>
@@ -216,9 +230,7 @@
                       <td><?php echo $record['nature']; ?></td>
                       <td><?php echo $record['summary']; ?></td>
                       <td><?php echo $record['number_of_page']; ?></td>
-                      <td><img src="<?php echo $record['picture']; ?>" alt="picture" width="180px"></td>
                       <td>
-
                     <button onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['summaryUp', $record['summary']]])); ?>')">Show</button>
                     <button onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['summaryUp', $record['summary']]])); ?>')">Update</button>
                     <button onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>

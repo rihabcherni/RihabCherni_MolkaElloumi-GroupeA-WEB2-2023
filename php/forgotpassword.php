@@ -14,10 +14,9 @@
       exit();
     }
     $newPassword = generatePassword();
-    $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
     $query = 'UPDATE student SET password = :password WHERE student_id = :student_id';
     $stmt = $conn->prepare($query);
-    $stmt->bindValue(':password', $hashedPassword);
+    $stmt->bindValue(':password', $newPassword);
     $stmt->bindValue(':student_id', $student['student_id']);
     $stmt->execute();
       $subject = 'Your new password';
@@ -60,7 +59,7 @@
     <title>Login EVELVE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="../style/index.css?v=2.1" />
-    <link rel="stylesheet" href="./style/all.css?v=2.1" />
+    <link rel="stylesheet" href="./style/all.css?v=3.1" />
     <script src="../js/jquery.min.js"></script>
 </head>
 <body class="authBody">

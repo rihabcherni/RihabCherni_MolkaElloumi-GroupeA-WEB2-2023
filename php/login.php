@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['Date_of_birth'] = $row['Date_of_birth'];
                 $_SESSION['phone'] = $row['phone'];
                 $_SESSION['education_level'] = $row['education_level'];
-                $_SESSION['Photo'] = $row['Photo'];
+                $_SESSION['photo'] = $row['Photo'];
                 $_SESSION['Email'] = $_POST["Email"];
                 $_SESSION['user']= 'student';
                 header("Location: student/home.php");
                 exit();
             } else {
                 $_SESSION['password-error'] = "Password incorrect.";
-      }
+            }
         } else {
             $adminQuery = $conn->prepare("SELECT admin_id, firstName,lastName, photo, address,phone, password FROM admin WHERE Email = :Email");
             $adminQuery->bindValue(':Email', $email);
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Login EVELVE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="../style/index.css?v=1.1?v=2.1" />
-    <link rel="stylesheet" href="./style/all.css?v=2.1" />
+    <link rel="stylesheet" href="./style/all.css?v=3.1" />
     <script src="../js/jquery.min.js"></script>
 </head>
 <body class="authBody">

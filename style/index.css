@@ -14,6 +14,20 @@
     grid-template-columns: 60% 40%;
     box-shadow: 0 10px 10px rgba(125, 124, 124, 0.5);
   }
+  #update-profile{
+    display: grid;
+    grid-template-columns: 40% 55%;
+    box-shadow: 0 10px 10px rgba(125, 124, 124, 0.5); 
+    border: 1px solid rgb(231, 228, 228);
+    margin: 20px;
+  }
+  #update-profile .gr-input{
+    margin: 20px;
+  }
+  #update-profile input{
+   border: 0;
+   font-size: 16px;
+  }
   #register-box{
     grid-template-columns: 40% 60%;
   }
@@ -193,7 +207,7 @@
   .auth-container .forgot a:hover {
     color: #0056b3;
   }
-  .auth-container .myBtn {
+   .myBtn {
     display: block;
     width: 100%;
     max-width: 300px;
@@ -211,10 +225,10 @@
     margin: 2rem auto 1rem;
     background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
   }
-  .auth-container .myBtn:hover {
+   .myBtn:hover {
     background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
   }
-  .auth-container .myBtn2 {
+  .myBtn2 {
     background-color: rgb(186, 186, 186);
     border: 2px solid white;
     color: white;
@@ -227,7 +241,7 @@
     border-radius: 100px;
     width: 50%;
   }
-  .auth-container .myBtn2:hover {
+  .myBtn2:hover {
     background-color: white;
     color: black;
     transition: all 0.3s ease-in-out;
@@ -262,3 +276,31 @@
     }
   }
   
+  .profile-image{
+    border-radius: 5%;
+    width: 300px;
+    margin:60px 50px;
+    height: 300px;
+    border: 5px solid rgb(195, 195, 195);
+  }
+  .index-container{
+    display: grid;
+    grid-template-columns: 68% 21%;
+    gap: 8%;
+    margin:30px 100px !important;
+    line-height: 2;
+    color: rgb(96, 96, 96);
+  }
+  .index-home{
+    display: grid;
+    grid-template-columns: 70% 50%;
+    gap: 2%;
+    margin:30px 20px !important;
+    line-height: 2;
+    color: rgb(96, 96, 96);
+  }
+  .index-container img{
+    margin-top: -30px;
+    height: 250px;
+    width: 300px;
+  }

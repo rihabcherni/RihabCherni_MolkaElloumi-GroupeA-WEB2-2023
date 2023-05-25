@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Home</title>
-  <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
-  <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/index.css?v=1.1" />
-  <link rel="stylesheet" href="../style/all.css?v=1.1" />
-    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
-    <link rel="stylesheet" href="../style/home.css?v=1.1" />
-    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
-    <script src="../js/modal.js"></script>
-</head>
-<body>
-    <?php 
+<?php 
       session_start();
-      $user=$_SESSION['user'];
       if ($_SESSION['conn'] == false) {
         header("Location: ../login.php");
         exit();
@@ -25,7 +10,7 @@
         $newPassword = $_POST['newPassword'];
         $confirmPassword = $_POST['confirmPassword'];
         $Email = $_SESSION['Email'];
-        $query = 'SELECT * FROM '.$user.' WHERE Email = :Email';
+        $query = 'SELECT * FROM student WHERE Email = :Email';
         $stmt = $conn->prepare($query);
         $stmt->bindValue(':Email', $Email);
         $stmt->execute();
@@ -37,23 +22,31 @@
           $error = 'New password and confirm password do not match.';
           echo '<p>' . $error . '</p>';
         } else {
-          $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
           $query = 'UPDATE student SET password = :password WHERE Email = :Email';
           $stmt = $conn->prepare($query);
-          $stmt->bindValue(':password', $hashedPassword);
+          $stmt->bindValue(':password', $newPassword);
           $stmt->bindValue(':Email', $Email);
           $stmt->execute();
           $success = 'Password updated successfully.';
           echo '<p>' . $success . '</p>';
         }
       }
-      if($user==="admin") {
-        include 'adminNavbar.php';  
-      }else{
-        include 'navbar.php';   
-      }
-    ?>
-     <main id="main"> 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>update password</title>
+  <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
+  <script src="../js/jquery.min.js"></script>
+  <link rel="stylesheet" href="../style/index.css?v=1.1" />
+    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
+    <link rel="stylesheet" href="../style/all.css?v=2.1" />
+    <link rel="stylesheet" href="../style/Nav.css?v=3.1" />
+    <link rel="stylesheet" href="../style/home.css?v=2.1" />
+    <script src="../js/modal.js"></script>
+</head>
+<body>
+      <main id="main">
         <div  class="auth-container">
           <div id="uppass-box">
               <div>
@@ -64,16 +57,19 @@
                       <input type="text" id="oldPassword" name="oldPassword" placeholder="oldPassword" required />
                     </div><!--oldPassword-->
                     <div class="gr-input">
-                      <input type="password" id="password" name="password" placeholder="Password" required />
+                      <input type="password" id="newPassword" name="newPassword" placeholder="Password" required />
                     </div>
                     <div class="gr-input">
                       <input type="password" id="confirmPassword" name="confirmPassword"  placeholder="Confirm Password" required />
                     </div>
                     <input type="submit" id="up-btn" value="Update Password"  class="myBtn"/>
-                </form>
+                    <?php 
+                    echo '<a href="./login.php">back</a>';  
+                ?>
+                  </form>
               </div>
           </div>
         </div>
-     </main>
+      </main>
   </body>
 </html>

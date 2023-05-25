@@ -5,19 +5,16 @@
     exit();
   } 
   $activePage = 'club';
-  include 'crud.php';
-  include('config.php');
-  $id= $_SESSION['id'];
-  $club = getRecordById('club', $id , $conn);
+  include '../crud.php';
+  include('../config.php');
   $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-  $searchAttributes = ['id', 'name', 'logo', 'category'];
+  $searchAttributes = ['id', 'name',  'category'];
   $club = searchRecords('club', $searchTerm, $searchAttributes, $conn);
   if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
     if (!empty($_POST['action']) && $_POST['action'] === 'insert') {
-      if (!empty($_POST['name']) && !empty( $_FILES['logo']['name']) && !empty($_POST['category']) ) {
+      if (!empty($_POST['name']) && !empty($_POST['category']) ) {
           $data = [
               'name' => $_POST['name'],
-              'logo' =>  $_FILES['logo']['name'],
               'category' => $_POST['category'],
           ];
           $result = insertRecord('club', $data, $conn);
@@ -36,14 +33,11 @@
         $id = $_POST['id'];
         echo"". $id ;
         $name="";
-        $logo="";
         $category="";
         $name= $_POST['name'];
-        $logo= $_FILES['logo']['name'];
         $category= $_POST['category'];
         $data = [
           'name' => $_POST['name'],
-          'logo' =>  $_FILES['logo']['name'],
           'category' => $_POST['category'],
         ];
         $result = updateRecord('club',$id,$data,  $conn);
@@ -73,12 +67,12 @@
   <title>Evelvo Club</title>
   <script src="https://kit.fontawesome.com/ff3b6c3621.js" crossorigin="anonymous"></script>
   <script src="../js/jquery.min.js"></script>
-  <link rel="stylesheet" href="../style/index.css?v=1.1" />
-  <link rel="stylesheet" href="../style/all.css?v=1.1" />
-    <link rel="stylesheet" href="../style/Nav2.css?v=1.1" />
-    <link rel="stylesheet" href="../style/home.css?v=1.1" />
-    <link rel="stylesheet" href="../style/modal.css?v=1.1" />
-    <script src="../js/modal.js"></script>
+  <link rel="stylesheet" href="../../style/index.css?v=1.1" />
+  <link rel="stylesheet" href="../../style/all.css?v=3.1" />
+    <link rel="stylesheet" href="../../style/Nav.css?v=3.1" />
+    <link rel="stylesheet" href="../../style/home.css?v=1.1" />
+    <link rel="stylesheet" href="../../style/modal.css?v=1.1" />
+    <script src="../../js/modal.js"></script>
 </head>
 <body>
   <?php include 'navbar.php'; ?>
@@ -95,9 +89,6 @@
               <form action="" method="POST" enctype="multipart/form-data">
                   <div class="grp-input">
                     <input type="text" name="name" placeholder="Name" required>
-                  </div>
-                  <div class="grp-input">
-                    <input type="file" name="logo" accept="image/*" required>
                   </div>
                   <div class="grp-input">
                     <input type="text" name="category" placeholder="Category" required>
@@ -117,9 +108,6 @@
                 <input type="hidden" name="action" value="update"> 
                 <div class="grp-input">
                   <input type="text" name="name" placeholder="Name" id="nameUp">
-                </div>
-                <div class="grp-input">
-                  <input type="file" name="logo" accept="image/*" id="logoUp">
                 </div>
                 <div class="grp-input">
                   <input type="text" name="category" placeholder="Category"  id="categoryUp">
@@ -164,7 +152,6 @@
                 <tr>
                   <th>ID club</th>
                   <th>Name</th>
-                  <th>Logo</th>
                   <th>Category</th>
                   <th>Actions</th></tr>
                 </tr>
@@ -175,11 +162,10 @@
                     <tr>
                       <td><?php echo $record['id']; ?></td>
                       <td><?php echo $record['name']; ?></td>
-                      <td><img src="<?php echo $record['logo']; ?>" alt="Logo" width="180px"></td>
                       <td><?php echo $record['category']; ?></td>
                       <td>
-                        <button onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['logoUp', $record['logo']],['categoryUp', $record['category']]])); ?>')">Show</button>
-                        <button onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['logoUp', $record['logo']],['categoryUp', $record['category']]])); ?>')">Update</button>
+                        <button onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['categoryUp', $record['category']]])); ?>')">Show</button>
+                        <button onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['categoryUp', $record['category']]])); ?>')">Update</button>
                         <button onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
                       </td>
                     </tr>

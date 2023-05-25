@@ -87,7 +87,7 @@
   #show-content img{
     width: 150px;
   }
-  .table-container {
+  /* .table-container {
     display: grid;
     grid-template-columns:1fr ;
     justify-content: center;
@@ -103,4 +103,4 @@
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
-  }
+  } */

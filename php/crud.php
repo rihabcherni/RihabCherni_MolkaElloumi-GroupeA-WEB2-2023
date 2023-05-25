@@ -25,31 +25,14 @@
         $query = "INSERT INTO $tableName ($columns) VALUES ($value)";
         $stmt = $conn->prepare($query);
         foreach ($data as $key => $value) {
-            if ($key == 'logo') { 
-                $filename = $_FILES['logo']['name'];
-                $tempname = $_FILES['logo']['tmp_name'];
-                $folder = '../picture/clubLogo/'.$filename;
-                move_uploaded_file($tempname, $folder);
-                $stmt->bindValue(":$key", $folder);
-            } else {
-                $stmt->bindValue(":$key", $value);
-            }
+            $stmt->bindValue(":$key", $value);
         }
         return $stmt->execute();
     }
     function updateRecord($tableName, $id, $data, $conn) {
         $setClause = '';
         foreach ($data as $key => $value) {
-            if ($key == 'logo') {
-                $filename = $_FILES['logo']['name'];
-                $tempname = $_FILES['logo']['tmp_name'];
-                $folder = '../picture/clubLogo/' . $filename;
-                move_uploaded_file($tempname, $folder);
-                $setClause .= "$key = :$key, ";
-                $data[$key] = $folder;
-            } else {
-                $setClause .= "$key = :$key, ";
-            }
+            $setClause .= "$key = :$key, ";
         }
         $setClause = rtrim($setClause, ', ');
         $query = "UPDATE $tableName SET $setClause WHERE id = :id";
