@@ -5,8 +5,7 @@
             $conditions[] = $attribute . " LIKE :searchTerm";
         }     
         $query = "SELECT * FROM $tableName WHERE " . implode(" OR ", $conditions);
-        $stmt = $conn->prepare($query);
-        
+        $stmt = $conn->prepare($query);   
         $searchValue = '%' . $searchTerm . '%';
         $stmt->bindParam(':searchTerm', $searchValue);
         $stmt->execute();
