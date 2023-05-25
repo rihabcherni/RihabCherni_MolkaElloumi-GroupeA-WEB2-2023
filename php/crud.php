@@ -1,11 +1,4 @@
 <?php
-
-    function getRecordById($tableName, $id, $conn){
-        $stmt = $conn->prepare("SELECT * FROM $tableName WHERE student_id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
     function searchRecords($tableName, $searchTerm, $searchAttributes, $conn) {
         $conditions = [];
         foreach ($searchAttributes as $attribute) {

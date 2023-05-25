@@ -304,3 +304,26 @@
     height: 250px;
     width: 300px;
   }
+
+  #openBtn, #search, .showBtn, .updateBtn, .deleteBtn{
+    padding: 10px 20px;
+    color: rgb(254, 254, 254);
+    background-color: rgb(52, 76, 52) !important;
+    border-radius: 10px;
+    border: none;
+    margin: 5px
+  }
+  #searchInput{
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin: 5px
+  }
+  .showBtn{
+    background-color: rgb(52, 76, 52) !important;
+  }
+  .updateBtn{
+    background-color: rgb(18, 35, 89) !important;
+  }
+   .deleteBtn{
+    background-color: rgb(75, 121, 220) !important;
+  }

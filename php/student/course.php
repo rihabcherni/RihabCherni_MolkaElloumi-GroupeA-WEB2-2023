@@ -85,6 +85,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
     <link rel="stylesheet" href="../../style/home.css?v=1.1" />
     <link rel="stylesheet" href="../../style/modal.css?v=1.1" />
     <script src="../../js/modal.js"></script>
+    <style>
+    table {
+      border-collapse: collapse !important;
+
+      margin: 30px 30px ;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <?php include 'navbar.php'; ?>
@@ -172,8 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
           <div class="table-container"> 
             <div>
               <form action="" method="GET">
-                <input type="text" name="search" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
-                <input type="submit" value="Search"/>
+              <input type="text"name="search"  id="searchInput" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
+                <input type="submit" value="Search" id="search"/>
               </form>
               <button id="openBtn" onclick="openAddModal()">ADD</button>
             </div> 
@@ -201,9 +219,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
                       <td><?php echo $record['description']; ?></td>
                       <td>
 
-                    <button onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['descriptionUp', $record['description']]])); ?>')">Show</button>
-                    <button onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['descriptionUp', $record['description']]])); ?>')">Update</button>
-                    <button onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
+                    <button class="showBtn" onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['descriptionUp', $record['description']]])); ?>')">Show</button>
+                    <button  class="updateBtn" onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['descriptionUp', $record['description']]])); ?>')">Update</button>
+                    <button class="deleteBtn" onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
                   </td>
                     </tr>
                   <?php endforeach; ?>

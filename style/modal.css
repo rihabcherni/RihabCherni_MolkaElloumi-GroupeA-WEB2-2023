@@ -87,20 +87,3 @@
   #show-content img{
     width: 150px;
   }
-  /* .table-container {
-    display: grid;
-    grid-template-columns:1fr ;
-    justify-content: center;
-    align-items: center;
-    margin:5px 50px;
-  }
-  .table-container td, .table-container td{
-    text-align: center;
-    background-color: #ecebeb;
-  }
-  .table-container div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-  } */

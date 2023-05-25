@@ -14,8 +14,9 @@
     if (!empty($_POST['action']) && $_POST['action'] === 'insert') {
       if (!empty($_POST['name']) && !empty($_POST['category']) ) {
           $data = [
-              'name' => $_POST['name'],
-              'category' => $_POST['category'],
+            'student_id' => $_SESSION['id'],
+            'name' => $_POST['name'],
+            'category' => $_POST['category'],
           ];
           $result = insertRecord('club', $data, $conn);
 
@@ -73,6 +74,24 @@
     <link rel="stylesheet" href="../../style/home.css?v=1.1" />
     <link rel="stylesheet" href="../../style/modal.css?v=1.1" />
     <script src="../../js/modal.js"></script>
+    <style>
+    table {
+      border-collapse: collapse !important;
+
+      margin: 30px 30px ;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <?php include 'navbar.php'; ?>
@@ -142,8 +161,8 @@
           <div class="table-container"> 
             <div>
               <form action="" method="GET">
-                <input type="text" name="search" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
-                <input type="submit" value="Search"/>
+              <input type="text"name="search"  id="searchInput" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
+                <input type="submit" value="Search" id="search"/>
               </form>
               <button id="openBtn" onclick="openAddModal()">ADD</button>
             </div> 
@@ -164,9 +183,9 @@
                       <td><?php echo $record['name']; ?></td>
                       <td><?php echo $record['category']; ?></td>
                       <td>
-                        <button onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['categoryUp', $record['category']]])); ?>')">Show</button>
-                        <button onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['categoryUp', $record['category']]])); ?>')">Update</button>
-                        <button onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
+                        <button class="showBtn" onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['categoryUp', $record['category']]])); ?>')">Show</button>
+                        <button  class="updateBtn" onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['categoryUp', $record['category']]])); ?>')">Update</button>
+                        <button class="deleteBtn" onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
                       </td>
                     </tr>
                   <?php endforeach; ?>

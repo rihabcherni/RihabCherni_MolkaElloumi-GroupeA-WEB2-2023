@@ -94,16 +94,14 @@
     <script src="../../js/modal.js"></script>
     <style>
     table {
-      border-collapse: collapse;
+      border-collapse: collapse !important;
       margin: 30px 30px ;
     }
-
     th, td {
       padding: 8px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
-
     th {
       background-color: #f2f2f2;
       text-align: center;
@@ -201,8 +199,8 @@
           <div class="table-container"> 
             <div>
               <form action="" method="GET">
-                <input type="text" name="search" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
-                <input type="submit" value="Search"/>
+              <input type="text"name="search"  id="searchInput" placeholder="Search..." value="<?php echo $searchTerm; ?>"/>
+                <input type="submit" value="Search" id="search"/>
               </form>
               <button id="openBtn" onclick="openAddModal()">ADD</button>
             </div> 
@@ -231,9 +229,9 @@
                       <td><?php echo $record['summary']; ?></td>
                       <td><?php echo $record['number_of_page']; ?></td>
                       <td>
-                    <button onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['summaryUp', $record['summary']]])); ?>')">Show</button>
-                    <button onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['levelUp', $record['level']],['domain_studyUp', $record['domain_study']],['summaryUp', $record['summary']]])); ?>')">Update</button>
-                    <button onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
+                    <button class="showBtn" onclick="openShowModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['authorUp', $record['author']],['summaryUp', $record['summary']]])); ?>')">Show</button>
+                    <button  class="updateBtn" onclick="openUpdateModal('<?php echo htmlspecialchars(json_encode([['idUp',$record['id']],['nameUp', $record['name']],['natureUp', $record['nature']],['authorUp', $record['author']],['summaryUp', $record['summary']]])); ?>')">Update</button>
+                    <button class="deleteBtn" onclick="openDeleteModal(<?php echo $record['id']; ?>)">Delete</button>
                   </td>
                     </tr>
                   <?php endforeach; ?>

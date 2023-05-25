@@ -34,8 +34,23 @@ if ($_SESSION['conn'] == false) {
         font-weight: bold;
         background-color: #345146;
       }
+    table {
+      border-collapse: collapse !important;
 
-      </style>
+      margin: 30px 30px ;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <?php include 'navbar.php'; ?>

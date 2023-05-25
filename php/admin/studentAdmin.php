@@ -18,7 +18,8 @@ $activePage = 'student-admin';
       <link rel="stylesheet" href="../../style/home.css?v=2.1" />
       <style>
     table {
-      border-collapse: collapse;
+      border-collapse: collapse !important;
+
       position: absolute;
       margin: 30px 0 0 30px ;
     }
